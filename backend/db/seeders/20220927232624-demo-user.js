@@ -4,12 +4,13 @@ const { Op } = require("sequelize");
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
-  options.schema = '<your-schema-name>';  // define your schema in options object
+  options.schema = 'airbnbtest';  // define your schema in options object
 }
 
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        return queryInterface.bulkInsert('Users', [
+        options.tableName='Users';
+        return queryInterface.bulkInsert(options, [
             {
                 firstName: 'Jonathan',
                 lastName: 'Blubee',
@@ -49,7 +50,8 @@ module.exports = {
     },
 
     down: async (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('Users', {
+        options.tableName='Users';
+      return queryInterface.bulkDelete(options, {
         username: {
           [Op.in]: [
               'jbluebee',
