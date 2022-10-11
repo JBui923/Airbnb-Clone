@@ -1,4 +1,4 @@
-const { sequelize } = require('.db/models');
+const { sequelize } = require('./db/models');
 
 const schemaName = 'airbnbtest'; // replace with your schema name
 
