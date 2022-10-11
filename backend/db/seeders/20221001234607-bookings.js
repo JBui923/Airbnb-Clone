@@ -1,6 +1,11 @@
 'use strict';
 const { Op } = require("sequelize");
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = 'airbnbtest';  // define your schema in options object
+}
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Bookings', [

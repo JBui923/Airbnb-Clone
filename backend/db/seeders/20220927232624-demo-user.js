@@ -2,6 +2,11 @@
 const bcrypt = require("bcryptjs");
 const { Op } = require("sequelize");
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = '<your-schema-name>';  // define your schema in options object
+}
+
 module.exports = {
     up: async (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert('Users', [
